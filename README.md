@@ -2,61 +2,33 @@
 # Sarah Windeknecht
 February 14, 2023
 
+The Smart Smoker program reads a csv file and creates a producer with three task-queues.
 
-> Use RabbitMQ to distribute tasks to multiple workers
+The program simulates a streaming series of temperature readings from a smart smoker and two foods, reading the temperatures every half minute.
 
-One process will create task messages. Multiple worker processes will share the work. 
+The smoker-temp.csv file has four columns:
+    [0] Date-time stamp
+    [1] Smoker temperature
+    [2] Food A temperature
+    [3] Food B temperature
 
+We want know if:
 
-## Before You Begin
+The smoker temperature decreases by more than 15 degrees F in 2.5 minutes.
+Any food temperature changes less than 1 degree F in 10 minutes.
 
-1. Fork this starter repo into your GitHub.
-1. Clone your repo down to your machine.
-1. View / Command Palette - then Python: Select Interpreter
-1. Select your conda environment. 
+## Prerequisites
 
-## Read
+RabbitMQ server running
 
-1. Read the [RabbitMQ Tutorial - Work Queues](https://www.rabbitmq.com/tutorials/tutorial-two-python.html)
-1. Read the code and comments in this repo.
+Pika installed in the active Python environment
 
-## RabbitMQ Admin 
+## Running the Program
 
-RabbitMQ comes with an admin panel. When you run the task emitter, reply y to open it. 
+1. Open Terminal
+2. Run bbq-producer.py
 
-(Python makes it easy to open a web page - see the code to learn how.)
-
-## Execute the Producer
-
-1. Run emitter_of_tasks.py (say y to monitor RabbitMQ queues)
-
-Explore the RabbitMQ website.
-
-## Execute a Consumer / Worker
-
-1. Run listening_worker.py
-
-Will it terminate on its own? How do you know? 
-
-## Ready for Work
-
-1. Use your emitter_of_tasks to produce more task messages.
-
-## Start Another Listening Worker 
-
-1. Use your listening_worker.py script to launch a second worker. 
-
-Follow the tutorial. 
-Add multiple tasks (e.g. First message, Second message, etc.)
-How are tasks distributed? *evenly between the two workers*
-Monitor the windows with at least two workers. 
-Which worker gets which tasks? *the first worker ran gets the odd tasks; the second worker gets the even tasks* 
-
-
-## Reference
-
-- [RabbitMQ Tutorial - Work Queues](https://www.rabbitmq.com/tutorials/tutorial-two-python.html)
-
+To open the RabbitMQ Admin page, set show_offer = "False", or set show_offer = "True" to be given the option.
 
 ## Screenshot
 
