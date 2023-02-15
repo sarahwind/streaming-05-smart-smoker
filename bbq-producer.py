@@ -43,6 +43,7 @@ def main(host: str):
         foodB_temp_queue (str): food B queue
         csv_file: csv read
     """
+    # read csv
     with open(csv_file, 'r') as file:
         reader = csv.reader(file, delimiter=',')
         #skip header
